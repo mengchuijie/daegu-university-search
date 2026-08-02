@@ -1,0 +1,177 @@
+{
+  "university": {
+    "name": "大邱大学",
+    "nameKo": "대구대학교",
+    "nameEn": "Daegu University",
+    "founded": 1956,
+    "location": "韩国 庆尚北道 庆山市",
+    "campus": "268.5 公顷",
+    "type": "综合性本科大学",
+    "rankings": ["BK21PLUS 工程大学", "LINC+ 产学合作优先大学", "韩国教育部创新支持项目 A 级大学"],
+    "description": "大邱大学是韩国新一代半导体创新联盟大学，在特殊教育、康复科学、社会福利、信息通信工程、生命科学、艺术设计等领域具有很强实力。",
+    "website": "https://www.daegu.ac.kr",
+    "websiteCn": "http://daegu.jupinzan.com/"
+  },
+  "programs": [
+    {
+      "id": "spec-edu-ba",
+      "level": "本科",
+      "name": "特殊教育",
+      "nameKo": "특수교육",
+      "category": "教育",
+      "tuition": "约 350-400 万韩元/年",
+      "tuitionCny": "约 1.8-2.1 万人民币/年",
+      "language": "韩语 TOPIK 3 级",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["韩国顶尖水平", "全国实力优秀评定", "就业率高"],
+      "description": "大邱大学特殊教育专业在韩国具有很强实力，是学校王牌专业之一。"
+    },
+    {
+      "id": "rehab-sci-ba",
+      "level": "本科",
+      "name": "康复科学",
+      "nameKo": "재활과학",
+      "category": "医学",
+      "tuition": "约 380-420 万韩元/年",
+      "tuitionCny": "约 2.0-2.2 万人民币/年",
+      "language": "韩语 TOPIK 3 级",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["韩国领先", "临床实践", "语言治疗"],
+      "description": "康复科学涵盖语言治疗、物理治疗等方向，与大邱大学特殊教育形成学科群。"
+    },
+    {
+      "id": "social-welfare-ba",
+      "level": "本科",
+      "name": "社会福利",
+      "nameKo": "사회복지",
+      "category": "社会科学",
+      "tuition": "约 350 万韩元/年",
+      "tuitionCny": "约 1.8 万人民币/年",
+      "language": "韩语 TOPIK 3 级",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["全国实力优秀", "就业面广", "政策支持"],
+      "description": "社会福利专业在韩国具有很强的实力，毕业生可进入政府机构、NGO 等。"
+    },
+    {
+      "id": "it-engineering-ba",
+      "level": "本科",
+      "name": "信息通信工程",
+      "nameKo": "정보통신공학",
+      "category": "工科",
+      "tuition": "约 400-450 万韩元/年",
+      "tuitionCny": "约 2.1-2.3 万人民币/年",
+      "language": "韩语 TOPIK 3 级 或 雅思 5.5",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["全国实力优秀", "半导体创新联盟", "高就业率"],
+      "description": "信息通信工程是韩国新一代半导体创新联盟重点专业。"
+    },
+    {
+      "id": "cs-engineering-ba",
+      "level": "本科",
+      "name": "计算机工程",
+      "nameKo": "컴퓨터공학",
+      "category": "工科",
+      "tuition": "约 400-450 万韩元/年",
+      "tuitionCny": "约 2.1-2.3 万人民币/年",
+      "language": "韩语 TOPIK 3 级 或 雅思 5.5",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["全国实力优秀", "IT 产业对接", "奖学金多"],
+      "description": "计算机工程专业与韩国 IT 产业紧密对接，毕业生就业前景好。"
+    },
+    {
+      "id": "life-science-ba",
+      "level": "本科",
+      "name": "生命科学",
+      "nameKo": "생명과학",
+      "category": "理科",
+      "tuition": "约 400-450 万韩元/年",
+      "tuitionCny": "约 2.1-2.3 万人民币/年",
+      "language": "韩语 TOPIK 3 级 或 雅思 5.5",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["全国实力优秀", "实验室丰富", "研究导向"],
+      "description": "生命科学专业拥有丰富的实验室资源，适合有志于科研的学生。"
+    },
+    {
+      "id": "art-design-ba",
+      "level": "本科",
+      "name": "艺术设计",
+      "nameKo": "예술디자인",
+      "category": "艺术",
+      "tuition": "约 420-480 万韩元/年",
+      "tuitionCny": "约 2.2-2.5 万人民币/年",
+      "language": "韩语 TOPIK 3 级",
+      "gpa": "2.5/4.0 以上",
+      "duration": "4 年",
+      "features": ["全国实力优秀", "作品集要求", "录取率约 37%"],
+      "description": "艺术设计专业需提交作品集，设计学部录取率约 37%。"
+    },
+    {
+      "id": "bilingual-ma",
+      "level": "硕士",
+      "name": "一年制双语授课硕士",
+      "nameKo": "1년제 중영문 석사",
+      "category": "硕士",
+      "tuition": "约 500-600 万韩元/年",
+      "tuitionCny": "约 2.6-3.1 万人民币/年",
+      "language": "零韩语可申（中韩双语授课）",
+      "gpa": "2.5/4.0 以上",
+      "duration": "1 年",
+      "features": ["零韩语可申", "中韩双语授课", "一年制", "专升本可申"],
+      "description": "一年制双语授课硕士项目，无需韩语基础，适合快速提升学历。"
+    },
+    {
+      "id": "transfer-ba",
+      "level": "专升本",
+      "name": "专升本插班",
+      "nameKo": "편입",
+      "category": "本科",
+      "tuition": "约 350-450 万韩元/年",
+      "tuitionCny": "约 1.8-2.3 万人民币/年",
+      "language": "韩语 TOPIK 3 级（部分专业可放宽）",
+      "gpa": "2.5/4.0 以上",
+      "duration": "2 年（插班大三大四）",
+      "features": ["可插读大三大四", "中韩双语授课", "学分转换"],
+      "description": "专升本可插读大三大四，中韩双语授课，零韩语可申部分专业。"
+    },
+    {
+      "id": "phd-general",
+      "level": "博士",
+      "name": "博士研究生",
+      "nameKo": "박사",
+      "category": "博士",
+      "tuition": "约 500-700 万韩元/年",
+      "tuitionCny": "约 2.6-3.6 万人民币/年",
+      "language": "韩语 TOPIK 3 级 或 雅思 5.5",
+      "gpa": "3.0/4.0 以上",
+      "duration": "3-4 年",
+      "features": ["研究方向广", "奖学金机会多", "学术氛围好"],
+      "description": "博士项目覆盖特殊教育、康复科学、社会福利、信息通信等多个方向。"
+    }
+  ],
+  "scholarships": [
+    { "name": "入学奖学金", "amount": "减免 30-50% 学费", "condition": "新生自动评估" },
+    { "name": "成绩奖学金", "amount": "减免 30-50% 学费", "condition": "GPA 3.0 以上续享" },
+    { "name": "韩国政府 GKS 奖学金", "amount": "全奖（学费+生活费+机票）", "condition": "需单独申请，竞争激烈" }
+  ],
+  "admission": {
+    "requirements": ["高中毕业或同等学历（含三校生）", "韩语 TOPIK 3 级或雅思 5.5（部分专业）", "GPA 2.5/4.0 以上", "艺术类需作品集"],
+    "timeline": "2026 年 1、2、3 批多时段申请通道",
+    "visa": {
+      "type": "D-2 签证",
+      "materials": ["标准入学许可书", "存款证明（1.8 万美元冻结 6 个月）", "肺结核检测报告", "学历认证（公证+领事认证）"],
+      "note": "2026 年起韩国启用电子签证系统，建议提前 90 天准备"
+    }
+  },
+  "life": {
+    "accommodation": "校内宿舍月均 20 万韩元（约 1000 人民币）",
+    "transport": "地铁直达首尔（1.5 小时）",
+    "partTimeJob": "D-2 签证每周合法打工 20 小时",
+    "livingCost": "月均生活成本约 60-80 万韩元（3000-4000 人民币）"
+  }
+}

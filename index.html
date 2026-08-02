@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大邱大学搜索系统 | Daegu University Search</title>
+    <meta name="description" content="韩国大邱大学专业搜索、学费查询、申请条件一站式平台">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a56db;
+            --primary-light: #e0e7ff;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a56db 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            padding: 3rem 1rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .hero p { opacity: 0.9; font-size: 1rem; }
+        .hero .badges { margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+        .hero .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+        /* Search */
+        .search-section {
+            max-width: 900px;
+            margin: -1.5rem auto 0;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+        .search-box {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus { outline: none; border-color: var(--primary); }
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            background: var(--bg);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        /* Results */
+        .results { max-width: 900px; margin: 1.5rem auto; padding: 0 1rem; }
+        .result-card {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.2s;
+        }
+        .result-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .result-card .level-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .level-本科 { background: #dbeafe; color: #1e40af; }
+        .level-硕士 { background: #fef3c7; color: #92400e; }
+        .level-博士 { background: #ede9fe; color: #5b21b6; }
+        .level-专升本 { background: #d1fae5; color: #065f46; }
+        .result-card h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+        .result-card .name-ko { color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .result-card .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin: 0.75rem 0;
+        }
+        .info-item { font-size: 0.85rem; }
+        .info-item .label { color: var(--text-light); margin-right: 0.25rem; }
+        .info-item .value { color: var(--text); font-weight: 500; }
+        .features { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .feature-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+        .result-card .desc { color: var(--text-light); font-size: 0.85rem; margin-top: 0.5rem; }
+        /* Info sections */
+        .info-section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .info-section h2 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .info-card {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 1.25rem;
+        }
+        .info-card h4 { margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .info-card ul { list-style: none; }
+        .info-card li { font-size: 0.85rem; padding: 0.2rem 0; }
+        .info-card li::before { content: "▸ "; color: var(--primary); }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+        .no-results { text-align: center; padding: 3rem; color: var(--text-light); }
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .stat { text-align: center; }
+        .stat .num { font-size: 1.5rem; font-weight: 700; }
+        .stat .label { font-size: 0.75rem; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🎓 大邱大学搜索系统</h1>
+        <p>韩国大邱大学 (Daegu University) 专业搜索 · 学费查询 · 申请指南</p>
+        <div class="badges">
+            <span class="badge">建于 1956</span>
+            <span class="badge">BK21PLUS</span>
+            <span class="badge">LINC+</span>
+            <span class="badge">教育部 A 级</span>
+        </div>
+        <div class="stats">
+            <div class="stat"><div class="num" id="stat-programs">0</div><div class="label">专业项目</div></div>
+            <div class="stat"><div class="num" id="stat-scholarships">0</div><div class="label">奖学金</div></div>
+            <div class="stat"><div class="num">1.8万</div><div class="label">年学费起 (人民币)</div></div>
+        </div>
+    </div>
+
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" class="search-input" id="search" placeholder="搜索专业、学费、关键词...  例: 计算机、硕士、双语" autofocus>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="本科">本科</button>
+                <button class="filter-btn" data-filter="硕士">硕士</button>
+                <button class="filter-btn" data-filter="博士">博士</button>
+                <button class="filter-btn" data-filter="专升本">专升本</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <div class="info-section">
+        <h2>💰 奖学金政策</h2>
+        <div class="info-grid" id="scholarships"></div>
+    </div>
+
+    <div class="info-section">
+        <h2>📋 申请指南</h2>
+        <div class="info-grid" id="admission"></div>
+    </div>
+
+    <div class="info-section">
+        <h2>🏠 留学生活</h2>
+        <div class="info-grid" id="life"></div>
+    </div>
+
+    <div class="footer">
+        <p>大邱大学搜索系统 | <a href="https://github.com/mengchuijie/daegu-university-search">GitHub</a> | MIT License</p>
+        <p>数据仅供参考，以 <a href="https://www.daegu.ac.kr">大邱大学官网</a> 最新公告为准</p>
+    </div>
+
+    <script>
+        let data = {};
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        async function loadData() {
+            const res = await fetch('data.json');
+            data = await res.json();
+            document.getElementById('stat-programs').textContent = data.programs.length;
+            document.getElementById('stat-scholarships').textContent = data.scholarships.length;
+            render();
+            renderInfo();
+        }
+
+        function render() {
+            const results = document.getElementById('results');
+            let filtered = data.programs.filter(p => {
+                const matchFilter = currentFilter === 'all' || p.level === currentFilter;
+                const matchSearch = !searchTerm ||
+                    p.name.toLowerCase().includes(searchTerm) ||
+                    p.nameKo.toLowerCase().includes(searchTerm) ||
+                    p.category.toLowerCase().includes(searchTerm) ||
+                    p.description.toLowerCase().includes(searchTerm) ||
+                    (p.features || []).join(' ').toLowerCase().includes(searchTerm) ||
+                    p.tuitionCny.toLowerCase().includes(searchTerm) ||
+                    p.language.toLowerCase().includes(searchTerm);
+                return matchFilter && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                results.innerHTML = '<div class="no-results">没有找到匹配的专业，试试其他关键词？</div>';
+                return;
+            }
+
+            results.innerHTML = filtered.map(p => `
+                <div class="result-card">
+                    <span class="level-tag level-${p.level}">${p.level}</span>
+                    <h3>${p.name}</h3>
+                    <div class="name-ko">${p.nameKo} · ${p.category}</div>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="label">📅 学制:</span><span class="value">${p.duration}</span></div>
+                        <div class="info-item"><span class="label">💰 学费:</span><span class="value">${p.tuitionCny}</span></div>
+                        <div class="info-item"><span class="label">🗣️ 语言:</span><span class="value">${p.language}</span></div>
+                        <div class="info-item"><span class="label">📊 GPA:</span><span class="value">${p.gpa}</span></div>
+                    </div>
+                    <div class="features">${(p.features||[]).map(f => `<span class="feature-tag">${f}</span>`).join('')}</div>
+                    <div class="desc">${p.description}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderInfo() {
+            document.getElementById('scholarships').innerHTML = data.scholarships.map(s => `
+                <div class="info-card">
+                    <h4>🏆 ${s.name}</h4>
+                    <ul><li>金额: ${s.amount}</li><li>条件: ${s.condition}</li></ul>
+                </div>
+            `).join('');
+
+            document.getElementById('admission').innerHTML = `
+                <div class="info-card">
+                    <h4>📝 申请要求</h4>
+                    <ul>${data.admission.requirements.map(r => `<li>${r}</li>`).join('')}</ul>
+                </div>
+                <div class="info-card">
+                    <h4>🗓️ 申请时间</h4>
+                    <ul><li>${data.admission.timeline}</li></ul>
+                </div>
+                <div class="info-card">
+                    <h4>✈️ 签证信息</h4>
+                    <ul>
+                        <li>签证类型: ${data.admission.visa.type}</li>
+                        ${data.admission.visa.materials.map(m => `<li>${m}</li>`).join('')}
+                        <li>⚠️ ${data.admission.visa.note}</li>
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('life').innerHTML = `
+                <div class="info-card">
+                    <h4>🏠 住宿</h4>
+                    <ul><li>${data.life.accommodation}</li></ul>
+                </div>
+                <div class="info-card">
+                    <h4>🚇 交通</h4>
+                    <ul><li>${data.life.transport}</li></ul>
+                </div>
+                <div class="info-card">
+                    <h4>💼 打工</h4>
+                    <ul><li>${data.life.partTimeJob}</li></ul>
+                </div>
+                <div class="info-card">
+                    <h4>💰 月生活成本</h4>
+                    <ul><li>${data.life.livingCost}</li></ul>
+                </div>
+            `;
+        }
+
+        document.getElementById('search').addEventListener('input', e => {
+            searchTerm = e.target.value.toLowerCase().trim();
+            render();
+        });
+
+        document.getElementById('filters').addEventListener('click', e => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                render();
+            }
+        });
+
+        loadData();
+    </script>
+</body>
+</html>
