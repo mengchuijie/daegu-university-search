@@ -1,0 +1,17 @@
+{
+  "name": "Daegu University Search",
+  "install": "python3 --version",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "cd \"$(git rev-parse --show-toplevel)\" && python3 -m http.server 8000",
+      "description": "Serves the static single-page app (index.html + data.json) over HTTP on port 8000."
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8000
+    }
+  ]
+}
